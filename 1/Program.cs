@@ -17,7 +17,7 @@ namespace _1
             var sumDiagonals = new int[2*n - 1];
             for (var i = 0; i < n; i++)
             {
-                line[i] = Regex.Replace(line[i], @"[^0-9 \-]", String.Empty);
+                line[i] = Regex.Replace(line[i], @"-[^0-9]|[^0-9 \-]", String.Empty);
                 var item = line[i].Split(default(string[]), StringSplitOptions.RemoveEmptyEntries);
                 var m = item.Length;
                 if (m != n)
