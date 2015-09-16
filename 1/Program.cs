@@ -10,8 +10,7 @@ namespace _1
     {
         static void Main(string[] args)
         {
-            #region Чтение матрицы из файла
-
+            //----------Чтение матрицы из файла----------
             var line = File.ReadAllLines("input.txt", Encoding.Default);
             var n = line.Length;
             var matrix = new int[n][];
@@ -30,11 +29,9 @@ namespace _1
                 for (var j = 0; j < m; j++)
                     matrix[i][j] = Convert.ToInt32(item[j]);
             }
+            //-------------------------------------------
 
-            #endregion
-
-            #region Суммирование диагоналей
-
+            //----------Суммирование диагоналей----------
             for (var i = 0; i < 2*n - 1; i++)
                 sumDiagonals[i] = 0;
             for (var i = 0; i < n; i++)
@@ -46,11 +43,9 @@ namespace _1
                     sumDiagonals[n + j - 1] += matrix[i + j][i];
                 }
             }
+            //-------------------------------------------
 
-            #endregion
-
-            #region Поиск максимума исключая главную диагональ
-            
+            //----------Поиск максимальной суммы диагонали исключая главную диагональ----------
             var maxSumDiagonals = sumDiagonals[1];
             for (var i = 2; i < 2*n - 1; i++)
             {
@@ -59,14 +54,11 @@ namespace _1
                     maxSumDiagonals = sumDiagonals[i];
                 }
             }
+            //---------------------------------------------------------------------------------
 
-            #endregion
-
-            #region Вывод максимальной суммы диагонали
-
+            //----------Вывод максимальной суммы диагонали----------
             File.WriteAllText("output.txt", maxSumDiagonals.ToString());
-
-            #endregion
+            //------------------------------------------------------
         }
     }
 }
